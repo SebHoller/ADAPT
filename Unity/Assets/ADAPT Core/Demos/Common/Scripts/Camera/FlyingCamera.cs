@@ -34,6 +34,12 @@ public class FlyingCamera : MonoBehaviour
     private float rotationX = 180.0f;
     private float rotationY = -35.0f;
 
+    // following lines copied from: https://gist.github.com/gunderson/d7f096bd07874f31671306318019d996
+    private float mainSpeed = 0.5f; //regular speed
+    private float shiftAdd = 1.5f; //multiplied by how long shift is held.  Basically running
+    private float maxShift = 5.0f; //Maximum speed when holdin gshift
+    private float totalRun = 1.0f;
+
     // Update is called once per frame
     void Update()
     {
@@ -56,5 +62,44 @@ public class FlyingCamera : MonoBehaviour
             transform.position += Vector3.up * deltaUpdown;
         if (Input.GetKey(KeyCode.LeftControl))
             transform.position += Vector3.up * -deltaUpdown;
+
+        Vector3 p = GetBaseInput();
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            totalRun += Time.deltaTime;
+            p = p * totalRun * shiftAdd;
+            p.x = Mathf.Clamp(p.x, -maxShift, maxShift);
+            p.y = Mathf.Clamp(p.y, -maxShift, maxShift);
+            p.z = Mathf.Clamp(p.z, -maxShift, maxShift);
+        }
+        else
+        {
+            totalRun = Mathf.Clamp(totalRun * 0.5f, 1f, 1000f);
+            p = p * mainSpeed;
+        }
+        transform.Translate(p);
+    }
+
+    // these lines copied from: https://gist.github.com/gunderson/d7f096bd07874f31671306318019d996
+    private Vector3 GetBaseInput()
+    { //returns the basic values, if it's 0 than it's not active.
+        Vector3 p_Velocity = new Vector3();
+        if (Input.GetKey(KeyCode.W))
+        {
+            p_Velocity += new Vector3(0, 0, 1);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            p_Velocity += new Vector3(0, 0, -1);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            p_Velocity += new Vector3(-1, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            p_Velocity += new Vector3(1, 0, 0);
+        }
+        return p_Velocity;
     }
 }
