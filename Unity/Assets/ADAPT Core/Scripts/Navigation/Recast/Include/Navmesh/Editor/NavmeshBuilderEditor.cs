@@ -139,7 +139,7 @@ public class NavmeshBuilderEditor : Editor {
     {
         so.Update();
         NavmeshBuilder nm = ((NavmeshBuilder)target);
-        Undo.SetSnapshotTarget(nm, "Navmesh Bounds");
+        Undo.RecordObject(nm, "Navmesh Bounds");
         Color savedHandleColor = Handles.color;
         Handles.color = new Color(145f, 244f, 139f, 255f) / 255f;
         Vector3 p = sp_center.vector3Value;
@@ -174,7 +174,7 @@ public class NavmeshBuilderEditor : Editor {
         float handleSize = HandleUtility.GetHandleSize(vector);
         bool changed = GUI.changed;
         GUI.changed = false;
-        vector = Handles.Slider(vector, d, handleSize * 0.1f, new Handles.DrawCapFunction(Handles.CylinderCap), 0f);
+        vector = Handles.Slider(vector, d, handleSize * 0.1f, new Handles.CapFunction(Handles.CylinderHandleCap), 0f);
         if (GUI.changed)
         {
             r = Vector3.Dot(vector - p, d);

@@ -63,6 +63,7 @@ public class FlyingCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
             transform.position += Vector3.up * -deltaUpdown;
 
+        // these lines copied from: https://gist.github.com/gunderson/d7f096bd07874f31671306318019d996
         Vector3 p = GetBaseInput();
         if (Input.GetKey(KeyCode.LeftShift))
         {

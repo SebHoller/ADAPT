@@ -91,8 +91,8 @@ public class NavmeshBuilder : MonoBehaviour
 		
 	   public BigMesh(TerrainData td, Bounds b)
 		{
-			int xSamples = td.heightmapWidth;
-			int zSamples = td.heightmapHeight;
+			int xSamples = td.heightmapResolution;
+			int zSamples = td.heightmapResolution;
 			Vector3 patchScale = td.size / (float)(td.heightmapResolution-1);
 			patchScale.y = td.size.y;
 			float[,] heights = td.GetHeights(0, 0, xSamples, zSamples);
@@ -253,7 +253,7 @@ public class NavmeshBuilder : MonoBehaviour
         {
             Collider c = (Collider)obj;
             if (((layerMask & (1 << c.gameObject.layer)) != 0)
-				&& (c.gameObject.active == true)
+				&& (c.gameObject.activeSelf)
 				&& (c.gameObject.isStatic == true)
 				&& (c.isTrigger == false)
 				&& (c is CharacterController == false)
@@ -293,7 +293,7 @@ public class NavmeshBuilder : MonoBehaviour
 		ci.transform = ci.transform * Matrix4x4.TRS(
 			c.center,
 			Quaternion.identity,
-			c.extents * 2);
+			c.size * 2);
 		return ci;
 	}
 	

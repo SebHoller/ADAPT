@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/ADAPT Core/Tutorials/Tutorial2/Tutorial2Empty.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

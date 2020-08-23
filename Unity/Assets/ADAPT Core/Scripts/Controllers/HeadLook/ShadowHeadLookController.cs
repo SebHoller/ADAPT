@@ -133,7 +133,7 @@ public class ShadowHeadLookController : ShadowController
         Vector3[] jointDirections = new Vector3[nonAffectedJoints.Length];
         for (int i = 0; i < nonAffectedJoints.Length; i++)
         {
-            if (nonAffectedJoints[i].joint.GetChildCount() > 0)
+            if (nonAffectedJoints[i].joint.childCount > 0)
             {
                 Transform child = nonAffectedJoints[i].joint.GetChild(0);
                 jointDirections[i] = child.position - nonAffectedJoints[i].joint.position;
@@ -262,7 +262,7 @@ public class ShadowHeadLookController : ShadowController
         {
             Vector3 newJointDirection = Vector3.zero;
 
-            if (nonAffectedJoints[i].joint.GetChildCount() > 0)
+            if (nonAffectedJoints[i].joint.childCount > 0)
             {
                 Transform child = nonAffectedJoints[i].joint.GetChild(0);
                 newJointDirection = child.position - nonAffectedJoints[i].joint.position;

@@ -1,290 +1,348 @@
 fileFormatVersion: 2
 guid: 6f55029543d07634599db87b25a23300
 ModelImporter:
-  fileIDToRecycleName:
-    4300000: MixamoMesh
-  serializedVersion: 10
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      43: 4300000
+    second: MixamoMesh
+  - first:
+      4: 400028
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      1: 100028
+    second: //RootNode
+  - first:
+      4: 400050
+    second: Head
+  - first:
+      1: 100050
+    second: Head
+  - first:
+      4: 400040
+    second: HeadTop_End
+  - first:
+      1: 100040
+    second: HeadTop_End
+  - first:
+      4: 400058
+    second: Hips
+  - first:
+      1: 100058
+    second: Hips
+  - first:
+      4: 400062
+    second: LeftArm
+  - first:
+      1: 100062
+    second: LeftArm
+  - first:
+      4: 400066
+    second: LeftFoot
+  - first:
+      1: 100066
+    second: LeftFoot
+  - first:
+      4: 400054
+    second: LeftForeArm
+  - first:
+      1: 100054
+    second: LeftForeArm
+  - first:
+      4: 400026
+    second: LeftHand
+  - first:
+      1: 100026
+    second: LeftHand
+  - first:
+      4: 400010
+    second: LeftHandIndex1
+  - first:
+      1: 100010
+    second: LeftHandIndex1
+  - first:
+      4: 400020
+    second: LeftHandIndex2
+  - first:
+      1: 100020
+    second: LeftHandIndex2
+  - first:
+      4: 400022
+    second: LeftHandIndex3
+  - first:
+      1: 100022
+    second: LeftHandIndex3
+  - first:
+      4: 400006
+    second: LeftHandIndex4
+  - first:
+      1: 100006
+    second: LeftHandIndex4
+  - first:
+      4: 400044
+    second: LeftLeg
+  - first:
+      1: 100044
+    second: LeftLeg
+  - first:
+      4: 400056
+    second: LeftShoulder
+  - first:
+      1: 100056
+    second: LeftShoulder
+  - first:
+      4: 400052
+    second: LeftToeBase
+  - first:
+      1: 100052
+    second: LeftToeBase
+  - first:
+      4: 400004
+    second: LeftToe_End
+  - first:
+      1: 100004
+    second: LeftToe_End
+  - first:
+      4: 400060
+    second: LeftUpLeg
+  - first:
+      1: 100060
+    second: LeftUpLeg
+  - first:
+      4: 400030
+    second: MixamoMesh
+  - first:
+      137: 13700000
+    second: MixamoMesh
+  - first:
+      1: 100030
+    second: MixamoMesh
+  - first:
+      4: 400042
+    second: Neck
+  - first:
+      1: 100042
+    second: Neck
+  - first:
+      4: 400012
+    second: RightArm
+  - first:
+      1: 100012
+    second: RightArm
+  - first:
+      4: 400068
+    second: RightFoot
+  - first:
+      1: 100068
+    second: RightFoot
+  - first:
+      4: 400046
+    second: RightForeArm
+  - first:
+      1: 100046
+    second: RightForeArm
+  - first:
+      4: 400008
+    second: RightHand
+  - first:
+      1: 100008
+    second: RightHand
+  - first:
+      4: 400038
+    second: RightHandIndex1
+  - first:
+      1: 100038
+    second: RightHandIndex1
+  - first:
+      4: 400064
+    second: RightHandIndex2
+  - first:
+      1: 100064
+    second: RightHandIndex2
+  - first:
+      4: 400018
+    second: RightHandIndex3
+  - first:
+      1: 100018
+    second: RightHandIndex3
+  - first:
+      4: 400036
+    second: RightHandIndex4
+  - first:
+      1: 100036
+    second: RightHandIndex4
+  - first:
+      4: 400000
+    second: RightLeg
+  - first:
+      1: 100000
+    second: RightLeg
+  - first:
+      4: 400024
+    second: RightShoulder
+  - first:
+      1: 100024
+    second: RightShoulder
+  - first:
+      4: 400016
+    second: RightToeBase
+  - first:
+      1: 100016
+    second: RightToeBase
+  - first:
+      4: 400048
+    second: RightToe_End
+  - first:
+      1: 100048
+    second: RightToe_End
+  - first:
+      4: 400002
+    second: RightUpLeg
+  - first:
+      1: 100002
+    second: RightUpLeg
+  - first:
+      4: 400032
+    second: Spine
+  - first:
+      1: 100032
+    second: Spine
+  - first:
+      4: 400034
+    second: Spine1
+  - first:
+      1: 100034
+    second: Spine1
+  - first:
+      4: 400014
+    second: Spine2
+  - first:
+      1: 100014
+    second: Spine2
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default Material2
+    second: {fileID: 2100000, guid: 92f37cfab90a6ac46b69d52f1227cee2, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
-    generateAnimations: 3
+    legacyGenerateAnimations: 3
     bakeSimulation: 0
-    splitAnimations: 1
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMesh: 0
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
-  textMetaNamesToFileIDs:
-    //RootNode:
-      data:
-        first: 1
-        second: bc860100
-      data:
-        first: 4
-        second: 9c1a0600
-      data:
-        first: 111
-        second: 605fa900
-    Head:
-      data:
-        first: 1
-        second: d2860100
-      data:
-        first: 4
-        second: b21a0600
-    HeadTop_End:
-      data:
-        first: 1
-        second: c8860100
-      data:
-        first: 4
-        second: a81a0600
-    Hips:
-      data:
-        first: 1
-        second: da860100
-      data:
-        first: 4
-        second: ba1a0600
-    LeftArm:
-      data:
-        first: 1
-        second: de860100
-      data:
-        first: 4
-        second: be1a0600
-    LeftFoot:
-      data:
-        first: 1
-        second: e2860100
-      data:
-        first: 4
-        second: c21a0600
-    LeftForeArm:
-      data:
-        first: 1
-        second: d6860100
-      data:
-        first: 4
-        second: b61a0600
-    LeftHand:
-      data:
-        first: 1
-        second: ba860100
-      data:
-        first: 4
-        second: 9a1a0600
-    LeftHandIndex1:
-      data:
-        first: 1
-        second: aa860100
-      data:
-        first: 4
-        second: 8a1a0600
-    LeftHandIndex2:
-      data:
-        first: 1
-        second: b4860100
-      data:
-        first: 4
-        second: 941a0600
-    LeftHandIndex3:
-      data:
-        first: 1
-        second: b6860100
-      data:
-        first: 4
-        second: 961a0600
-    LeftHandIndex4:
-      data:
-        first: 1
-        second: a6860100
-      data:
-        first: 4
-        second: 861a0600
-    LeftLeg:
-      data:
-        first: 1
-        second: cc860100
-      data:
-        first: 4
-        second: ac1a0600
-    LeftShoulder:
-      data:
-        first: 1
-        second: d8860100
-      data:
-        first: 4
-        second: b81a0600
-    LeftToeBase:
-      data:
-        first: 1
-        second: d4860100
-      data:
-        first: 4
-        second: b41a0600
-    LeftToe_End:
-      data:
-        first: 1
-        second: a4860100
-      data:
-        first: 4
-        second: 841a0600
-    LeftUpLeg:
-      data:
-        first: 1
-        second: dc860100
-      data:
-        first: 4
-        second: bc1a0600
-    MixamoMesh:
-      data:
-        first: 1
-        second: be860100
-      data:
-        first: 4
-        second: 9e1a0600
-      data:
-        first: 137
-        second: a00bd100
-    Neck:
-      data:
-        first: 1
-        second: ca860100
-      data:
-        first: 4
-        second: aa1a0600
-    RightArm:
-      data:
-        first: 1
-        second: ac860100
-      data:
-        first: 4
-        second: 8c1a0600
-    RightFoot:
-      data:
-        first: 1
-        second: e4860100
-      data:
-        first: 4
-        second: c41a0600
-    RightForeArm:
-      data:
-        first: 1
-        second: ce860100
-      data:
-        first: 4
-        second: ae1a0600
-    RightHand:
-      data:
-        first: 1
-        second: a8860100
-      data:
-        first: 4
-        second: 881a0600
-    RightHandIndex1:
-      data:
-        first: 1
-        second: c6860100
-      data:
-        first: 4
-        second: a61a0600
-    RightHandIndex2:
-      data:
-        first: 1
-        second: e0860100
-      data:
-        first: 4
-        second: c01a0600
-    RightHandIndex3:
-      data:
-        first: 1
-        second: b2860100
-      data:
-        first: 4
-        second: 921a0600
-    RightHandIndex4:
-      data:
-        first: 1
-        second: c4860100
-      data:
-        first: 4
-        second: a41a0600
-    RightLeg:
-      data:
-        first: 1
-        second: a0860100
-      data:
-        first: 4
-        second: 801a0600
-    RightShoulder:
-      data:
-        first: 1
-        second: b8860100
-      data:
-        first: 4
-        second: 981a0600
-    RightToeBase:
-      data:
-        first: 1
-        second: b0860100
-      data:
-        first: 4
-        second: 901a0600
-    RightToe_End:
-      data:
-        first: 1
-        second: d0860100
-      data:
-        first: 4
-        second: b01a0600
-    RightUpLeg:
-      data:
-        first: 1
-        second: a2860100
-      data:
-        first: 4
-        second: 821a0600
-    Spine:
-      data:
-        first: 1
-        second: c0860100
-      data:
-        first: 4
-        second: a01a0600
-    Spine1:
-      data:
-        first: 1
-        second: c2860100
-      data:
-        first: 4
-        second: a21a0600
-    Spine2:
-      data:
-        first: 1
-        second: ae860100
-      data:
-        first: 4
-        second: 8e1a0600
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 54f161be0d5d4dd4e94ea6d90150aa3d
+  - 908fe0e138ba5094cb366f109ee58f6f
+  - 243d90a6293fd8c4fa2ccb95efa7321f
+  - 159bb5969103cc24ab80818b61b28587
+  - c16311294b3776345a804bcd0f5bea15
+  - 4c76abd909d0f2142850ba63d79b26a2
+  - fd54bcbade48d5c4dbd07d20eb2bef93
+  - 59de4aa16725fb94b94eff6e888958c4
+  - c900426dd714ed2438af825bb27ec4df
+  - 526b23853e9944f4195123ca1a685c6a
+  - 0fa06b27019e86e48b99e6ef756e63b4
+  - aea5ea0794e9d2a4dbf424f04ccbd958
+  - d04c8557d2eac304f8a7062028a303e6
+  - d5ef189bbc052384bb33e511d3481899
+  - 6d942c6a2331fdd4db7a13e0394bbbe2
+  - ad0045fffac2a0d4f9d7e927240e9765
+  - 562afddb0bd633e4c8eb9d727720a3d1
+  - 62c19882e7b8889489ab1230bd35be00
+  - 017418634f52b1445bc9e6a53b1078b8
+  - 8656642eb5ef1304a896324656f06ea9
+  - 09ee54e31d457064f80aa9a69489aa01
+  - 335f6e3af872d1c498017383e6ff8b92
+  - 547979b3cc43a1d469a3ad26719dbb91
+  - a04787cee89c7894c9476e7c0c546c31
+  - 693ee4eb43b01c94a9ea8735834add6f
+  - 359625fc01aad494086fc554c4cb09f6
+  - 18858a4225ccfba4c8f8d2f1be77fd1a
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.01
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 1
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
