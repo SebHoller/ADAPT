@@ -182,6 +182,7 @@
     <Compile Include="Assets\HumanMotionGeneration\AddObject.cs" />
     <Compile Include="Assets\HumanMotionGeneration\CharacterMovement.cs" />
     <Compile Include="Assets\HumanMotionGeneration\ReadFile.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\SkeletOutput.cs" />
     <Compile Include="Assets\HumanMotionGeneration\StlAssetPostProcessor.cs" />
     <None Include="Assets\ADAPT Core\Demos\DemoSteering\Recast\README.txt" />
     <None Include="Assets\ADAPT Core\Art\Shaders\ColoredBlended.shader" />
