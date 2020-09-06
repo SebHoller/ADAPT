@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
         string action = actions[counter];
         string param = parameter[counter];
         Character character = gameObject.AddComponent<Character>();
+        Vector3 vec;
         switch (action)
         {
             case "wait":
@@ -37,12 +38,37 @@ public class CharacterMovement : MonoBehaviour
                 break;
             case "move":
                 string[] split = param.Split(',');
-                character.NavGoTo(new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2])));
+                switch(split.Length)
+                {
+                    case 2:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                        break;
+                    case 3:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                        break;
+                    default:
+                        vec = new Vector3();
+                        break;
+                }
+                character.NavGoTo(vec);
                 break;
             case "leftHand":
             case "rightHand":
                 split = param.Split(',');
-                character.ReachFor(new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2])));
+                vec = new Vector3();
+                switch (split.Length)
+                {
+                    case 2:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                        break;
+                    case 3:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                        break;
+                    default:
+                        vec = new Vector3();
+                        break;
+                }
+                character.ReachFor(vec);
                 break;
             default:
                 break;
