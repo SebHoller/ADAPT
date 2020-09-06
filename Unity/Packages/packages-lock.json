@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "co.parabox.stl": {
+      "version": "https://github.com/karl-/pb_Stl.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "091eb79b91065329d4c87eb0894c58fc7a5e3dcf"
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,
@@ -31,7 +38,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.14",
+      "version": "1.1.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -62,7 +69,8 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.modules.ui": "1.0.0"
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
       }
     },
     "com.unity.modules.ai": {
