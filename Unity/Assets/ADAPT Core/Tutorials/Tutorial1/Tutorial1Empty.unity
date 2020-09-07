@@ -195,6 +195,54 @@ MonoBehaviour:
   - LeftUpLeg
   - RightUpLeg
   spine: {fileID: 70486417}
+--- !u!114 &70486420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70486418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dd265ce3b8a514c8508ae7bafdea18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hips: {fileID: 473344827}
+  NonBoneTransforms:
+  - MixamoMesh
+  - Ragdoll
+--- !u!114 &70486421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70486418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6ced62627482a4a87dae42c4094c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showGizmo: 1
+  ignoreBones:
+  - LeftLegUp
+  - RightLegUp
+--- !u!111 &70486422
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70486418}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: aea5ea0794e9d2a4dbf424f04ccbd958, type: 3}
+  m_Animations:
+  - {fileID: 7400000, guid: aea5ea0794e9d2a4dbf424f04ccbd958, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &122327836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: b0278216cab01734480110907511ee89,
@@ -220,6 +268,12 @@ MonoBehaviour:
   - Space/Ctrl - Raise/lower camera
   - 
   - E - Toggle Chuck model on/off
+--- !u!4 &473344827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400054, guid: f7fa46a8a7510e547b104fbb0aa2dcc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 70486416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1068560679
 PrefabInstance:
   m_ObjectHideFlags: 0
