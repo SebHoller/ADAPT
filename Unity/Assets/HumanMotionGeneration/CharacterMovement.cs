@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
         string action = actions[counter];
         string param = parameter[counter];
         Behavior behavior = gameObject.AddComponent<Behavior>();
+        Transform trans = gameObject.AddComponent<Transform>();
         Vector3 vec;
         switch (action)
         {
@@ -53,7 +54,25 @@ public class CharacterMovement : MonoBehaviour
                 behavior.Node_GoTo(vec);
                 break;
             case "leftHand":
+                behavior.Character.Body.Coordinator.reachArm = trans.Find("leftHand");
+                split = param.Split(',');
+                vec = new Vector3();
+                switch (split.Length)
+                {
+                    case 2:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                        break;
+                    case 3:
+                        vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                        break;
+                    default:
+                        vec = new Vector3();
+                        break;
+                }
+                behavior.Node_Reach(vec);
+                break;
             case "rightHand":
+                behavior.Character.Body.Coordinator.reachArm = trans.Find("rightHand");
                 split = param.Split(',');
                 vec = new Vector3();
                 switch (split.Length)
