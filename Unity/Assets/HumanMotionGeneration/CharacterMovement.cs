@@ -29,7 +29,7 @@ public class CharacterMovement : MonoBehaviour
     {
         string action = actions[counter];
         string param = parameter[counter];
-        Character character = gameObject.AddComponent<Character>();
+        Behavior behavior = gameObject.AddComponent<Behavior>();
         Vector3 vec;
         switch (action)
         {
@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour
                         vec = new Vector3();
                         break;
                 }
-                character.NavGoTo(vec);
+                behavior.Node_GoTo(vec);
                 break;
             case "leftHand":
             case "rightHand":
@@ -68,7 +68,7 @@ public class CharacterMovement : MonoBehaviour
                         vec = new Vector3();
                         break;
                 }
-                character.ReachFor(vec);
+                behavior.Node_Reach(vec);
                 break;
             default:
                 break;
