@@ -179,6 +179,7 @@
     <Compile Include="Assets\ADAPT Core\Tutorials\Tutorial4\Completed\TutorialIdleBehaviorCompleted.cs" />
     <Compile Include="Assets\ADAPT Core\Tutorials\Tutorial4\Completed\TutorialInvokeEventCompleted.cs" />
     <Compile Include="Assets\ADAPT Core\Tutorials\Tutorial4\Completed\TutorialWanderBehaviorCompleted.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\Actions.cs" />
     <Compile Include="Assets\HumanMotionGeneration\AddObject.cs" />
     <Compile Include="Assets\HumanMotionGeneration\CharacterMovement.cs" />
     <Compile Include="Assets\HumanMotionGeneration\ReadFile.cs" />
