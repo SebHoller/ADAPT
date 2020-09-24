@@ -37,11 +37,17 @@ public class Actions
     public void Walk(string param)
     {
         string[] split = param.Split(',');
-        var vec = split.Length switch
-        {
-            2 => new Vector3(float.Parse(split[0]), float.Parse(split[1])),
-            3 => new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2])),
-            _ => new Vector3(),
+        Vector3 vec = new Vector3();
+        switch (split.Length) {
+            case 2:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                break;
+            case 3:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                break;
+            default:
+                new Vector3();
+                break;
         };
         behavior.Node_GoTo(vec);
     }
@@ -50,11 +56,17 @@ public class Actions
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("leftHand");
         string[] split = param.Split(',');
-        var vec = split.Length switch
-        {
-            2 => new Vector3(float.Parse(split[0]), float.Parse(split[1])),
-            3 => new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2])),
-            _ => new Vector3(),
+        Vector3 vec = new Vector3();
+        switch (split.Length) {
+            case 2:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                break;
+            case 3:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                break;
+            default:
+                new Vector3();
+                break;
         };
         behavior.Node_Reach(vec);
     }
@@ -63,11 +75,18 @@ public class Actions
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("rightHand");
         string[] split = param.Split(',');
-        var vec = split.Length switch
+        Vector3 vec = new Vector3();
+        switch (split.Length)
         {
-            2 => new Vector3(float.Parse(split[0]), float.Parse(split[1])),
-            3 => new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2])),
-            _ => new Vector3(),
+            case 2:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                break;
+            case 3:
+                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                break;
+            default:
+                new Vector3();
+                break;
         };
         behavior.Node_Reach(vec);
     }
