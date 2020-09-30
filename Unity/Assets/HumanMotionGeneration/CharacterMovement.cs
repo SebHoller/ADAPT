@@ -29,50 +29,40 @@ using TreeSharpPlus;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Queue<string> instructions = null;
-    Queue<string> parameter = null;
     readonly Actions actions = new Actions();
     Behavior behavior;
-    Queue<Node> nodes = null;
+    List<Node> nodes = null;
     Boolean running = false;
 
-    public void Initialize(string path)
+    public void InputCharacterMovements(string path)
     {
         string[] lines = System.IO.File.ReadAllLines(path);
-        instructions = new Queue<string>();
-        parameter = new Queue<string>();
-        behavior = new Behavior();
+        behavior = gameObject.AddComponent<Behavior>();
         running = false;
+        nodes = new List<Node>();
 
         for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
             string[] split = line.Split(':');
-            instructions.Enqueue(split[0]);
-            parameter.Enqueue(split[1]);
-        }
-
-        nodes = new Queue<Node>();
-        while (instructions.Count>0)
-        {
-            string instruction = instructions.Dequeue();
-            string param = parameter.Dequeue();
-            switch (instruction)
+            string action = split[0];
+            string param = split[1];
+            switch (action)
             {
                 case "wait":
-                    nodes.Enqueue(actions.Wait(param));
+                    nodes.Add(actions.Wait(param));
                     break;
                 case "walk":
-                    nodes.Enqueue(actions.Walk(param));
+                    nodes.Add(actions.Walk(param));
                     break;
                 case "leftHand":
-                    nodes.Enqueue(actions.LeftHand(param));
+                    nodes.Add(actions.LeftHand(param));
                     break;
                 case "rightHand":
-                    nodes.Enqueue(actions.RightHand(param));
+                    nodes.Add(actions.RightHand(param));
                     break;
                 default:
-                    Console.Error.WriteLine("The command \"" + instruction + "\" is not implemented.");
+                    Console.Error.WriteLine("The command \"" + action + "\" is not implemented.");
                     break;
             }
         }
