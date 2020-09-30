@@ -5,7 +5,8 @@
 * 
 * Copyright (C) 2020 Sebastian Holler
 *
-* This file is part of ADAPT.
+* This file is part of HumanMotionGeneration.
+* This project extends ADAPT.
 * 
 * ADAPT is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published
@@ -23,19 +24,32 @@
 #endregion
 using System;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class Actions
 {
     static readonly GameObject gameObject = new GameObject();
     readonly Behavior behavior = gameObject.AddComponent<Behavior>();
     readonly Transform trans = gameObject.AddComponent<Transform>();
-    public void Wait(string time)
+
+    private string RemoveBrackets(string text)
     {
-        System.Threading.Thread.Sleep(Int32.Parse(time));
+        try {
+            return Regex.Replace(text, @"(,)", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
+        }
+        catch (RegexMatchTimeoutException) {
+            return String.Empty;
+        }
+    }
+
+    public void Wait(string param)
+    {
+        System.Threading.Thread.Sleep(Int32.Parse(param));
     }
 
     public void Walk(string param)
     {
+        RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec = new Vector3();
         switch (split.Length) {
@@ -55,6 +69,7 @@ public class Actions
     public void LeftHand(string param)
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("leftHand");
+        RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec = new Vector3();
         switch (split.Length) {
@@ -74,6 +89,7 @@ public class Actions
     public void RightHand(string param)
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("rightHand");
+        RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec = new Vector3();
         switch (split.Length)

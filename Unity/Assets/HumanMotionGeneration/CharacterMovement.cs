@@ -5,7 +5,8 @@
 * 
 * Copyright (C) 2020 Sebastian Holler
 *
-* This file is part of ADAPT.
+* This file is part of HumanMotionGeneration.
+* This project extends ADAPT.
 * 
 * ADAPT is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published
@@ -23,12 +24,12 @@
 #endregion
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CharacterMovement : MonoBehaviour
 {
-    string[] instructions;
-    string[] parameter;
-    int counter = 0;
+    Queue<string> instructions;
+    Queue<string> parameter;
     readonly Actions actions = new Actions();
 
     // Start is called before the first frame update
@@ -37,22 +38,20 @@ public class CharacterMovement : MonoBehaviour
         Console.WriteLine("Please enter the path to the text file with actions:");
         string path = Console.ReadLine();
         string[] lines = ReadFile.ReadLines(path);
-        instructions = new string[lines.Length];
-        parameter = new string[lines.Length];
         for(int i=0; i<lines.Length; i++)
         {
             string line = lines[i];
             string[] split = line.Split(':');
-            instructions[i] = split[0];
-            parameter[i] = split[1];
+            instructions.Enqueue(split[0]);
+            parameter.Enqueue(split[1]);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        string instruction = instructions[counter];
-        string param = parameter[counter];
+        string instruction = instructions.Dequeue();
+        string param = parameter.Dequeue();
         switch (instruction)
         {
             case "wait":
@@ -68,8 +67,8 @@ public class CharacterMovement : MonoBehaviour
                 actions.RightHand(param);
                 break;
             default:
+                Console.Error.WriteLine("The command \"" + instruction + " is not implemented.");
                 break;
         }
-        counter++;
     }
 }

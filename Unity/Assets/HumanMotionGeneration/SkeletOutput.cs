@@ -5,7 +5,8 @@
 * 
 * Copyright (C) 2020 Sebastian Holler
 *
-* This file is part of ADAPT.
+* This file is part of HumanMotionGeneration.
+* This project extends ADAPT.
 * 
 * ADAPT is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published
@@ -26,7 +27,6 @@ using System.IO;
 using UnityEngine;
 using CsvHelper;
 using System.Globalization;
-using Numpy;
 using System;
 
 public class SkeletOutput : MonoBehaviour
@@ -45,7 +45,7 @@ public class SkeletOutput : MonoBehaviour
     {
         if(File.Exists("SkeletOutput.csv"))
         {
-            FileStream stream = File.Open("path\\to\\file.csv", FileMode.Append);
+            FileStream stream = File.Open("SkeletOutput.csv", FileMode.Append);
             writer = new StreamWriter(stream);
             csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.Configuration.HasHeaderRecord = false;
