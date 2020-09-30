@@ -37,6 +37,7 @@ public class AddObject : MonoBehaviour
             {
                 StlObject.isStatic = true;
             }
+            StlObject.SetActive(false);
         }
     }
 
