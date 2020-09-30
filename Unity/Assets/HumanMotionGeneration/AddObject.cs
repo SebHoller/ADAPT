@@ -27,41 +27,26 @@ using UnityEngine;
 
 public class AddObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameObject StlObject = null;
+    Boolean created = false;
+    public void addObject(string path, Boolean isStatic)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Console.WriteLine("Please enter the path to your stl-file");
-        string path = Console.ReadLine();
-        GameObject StlObject = StlAssetPostProcessor.CreateStlParent(path);
+        StlObject = StlAssetPostProcessor.CreateStlParent(path);
         if (StlObject != null)
         {
-            Console.WriteLine("Please enter if this object is fixed (true/false/Y/N");
-            string fixed_in = Console.ReadLine();
-            bool fix;
-            switch (fixed_in)
-            {
-                case "true":
-                case "Y":
-                    fix = true;
-                    break;
-                case "false":
-                case "N":
-                    fix = false;
-                    break;
-                default:
-                    fix = true;
-                    break;
-            }
-            if (fix)
+            if (isStatic)
             {
                 StlObject.isStatic = true;
             }
+            created = true;
+        }
+    }
+
+    void Update()
+    {
+        if (created)
+        {
+            created = false;
             StlObject.SetActive(true);
         }
     }
