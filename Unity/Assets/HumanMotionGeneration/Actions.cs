@@ -25,6 +25,7 @@
 using System;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using TreeSharpPlus;
 
 public class Actions
 {
@@ -42,12 +43,13 @@ public class Actions
         }
     }
 
-    public void Wait(string param)
+    public Node Wait(string param)
     {
         System.Threading.Thread.Sleep(Int32.Parse(param));
+        return behavior.Node_Gesture("");
     }
 
-    public void Walk(string param)
+    public Node Walk(string param)
     {
         RemoveBrackets(param);
         string[] split = param.Split(',');
@@ -63,10 +65,10 @@ public class Actions
                 new Vector3();
                 break;
         };
-        behavior.Node_GoTo(vec);
+        return behavior.Node_GoTo(vec);
     }
 
-    public void LeftHand(string param)
+    public Node LeftHand(string param)
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("leftHand");
         RemoveBrackets(param);
@@ -83,10 +85,10 @@ public class Actions
                 new Vector3();
                 break;
         };
-        behavior.Node_Reach(vec);
+        return behavior.Node_Reach(vec);
     }
 
-    public void RightHand(string param)
+    public Node RightHand(string param)
     {
         behavior.Character.Body.Coordinator.reachArm = trans.Find("rightHand");
         RemoveBrackets(param);
@@ -104,6 +106,6 @@ public class Actions
                 new Vector3();
                 break;
         };
-        behavior.Node_Reach(vec);
+        return behavior.Node_Reach(vec);
     }
 }

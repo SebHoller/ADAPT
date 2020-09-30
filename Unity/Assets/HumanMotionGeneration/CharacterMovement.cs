@@ -25,50 +25,71 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using TreeSharpPlus;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Queue<string> instructions;
-    Queue<string> parameter;
+    Queue<string> instructions = null;
+    Queue<string> parameter = null;
     readonly Actions actions = new Actions();
+    Behavior behavior;
+    Queue<Node> nodes = null;
+    Boolean running = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Initialize(string path)
     {
-        Console.WriteLine("Please enter the path to the text file with actions:");
-        string path = Console.ReadLine();
-        string[] lines = ReadFile.ReadLines(path);
-        for(int i=0; i<lines.Length; i++)
+        string[] lines = System.IO.File.ReadAllLines(path);
+        instructions = new Queue<string>();
+        parameter = new Queue<string>();
+        behavior = new Behavior();
+        running = false;
+
+        for (int i = 0; i < lines.Length; i++)
         {
             string line = lines[i];
             string[] split = line.Split(':');
             instructions.Enqueue(split[0]);
             parameter.Enqueue(split[1]);
         }
+
+        nodes = new Queue<Node>();
+        while (instructions.Count>0)
+        {
+            string instruction = instructions.Dequeue();
+            string param = parameter.Dequeue();
+            switch (instruction)
+            {
+                case "wait":
+                    nodes.Enqueue(actions.Wait(param));
+                    break;
+                case "walk":
+                    nodes.Enqueue(actions.Walk(param));
+                    break;
+                case "leftHand":
+                    nodes.Enqueue(actions.LeftHand(param));
+                    break;
+                case "rightHand":
+                    nodes.Enqueue(actions.RightHand(param));
+                    break;
+                default:
+                    Console.Error.WriteLine("The command \"" + instruction + "\" is not implemented.");
+                    break;
+            }
+        }
+    }
+
+    private Node MovementTree()
+    {
+        return new Sequence(nodes.ToArray());
     }
 
     // Update is called once per frame
     void Update()
     {
-        string instruction = instructions.Dequeue();
-        string param = parameter.Dequeue();
-        switch (instruction)
+        if ((nodes != null) && (!running))
         {
-            case "wait":
-                actions.Wait(param);
-                break;
-            case "walk":
-                actions.Walk(param);
-                break;
-            case "leftHand":
-                actions.LeftHand(param);
-                break;
-            case "rightHand":
-                actions.RightHand(param);
-                break;
-            default:
-                Console.Error.WriteLine("The command \"" + instruction + " is not implemented.");
-                break;
+            running = true;
+            BehaviorEvent.Run(this.MovementTree(), this.behavior);
         }
     }
 }
