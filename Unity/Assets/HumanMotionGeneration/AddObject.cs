@@ -28,7 +28,6 @@ using UnityEngine;
 public class AddObject : MonoBehaviour
 {
     GameObject StlObject = null;
-    Boolean created = false;
     public void addObject(string path, Boolean isStatic)
     {
         StlObject = StlAssetPostProcessor.CreateStlParent(path);
@@ -38,15 +37,13 @@ public class AddObject : MonoBehaviour
             {
                 StlObject.isStatic = true;
             }
-            created = true;
         }
     }
 
     void Update()
     {
-        if (created)
+        if ((StlObject != null) && !StlObject.activeSelf)
         {
-            created = false;
             StlObject.SetActive(true);
         }
     }
