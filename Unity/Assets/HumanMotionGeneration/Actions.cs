@@ -45,8 +45,8 @@ public class Actions
 
     public Node Wait(string param)
     {
-        System.Threading.Thread.Sleep(Int32.Parse(param));
-        return behavior.Node_Gesture("");
+        // System.Threading.Thread.Sleep(Int32.Parse(param));
+        return behavior.Node_Gesture("idle_1");
     }
 
     public Node Walk(string param)
