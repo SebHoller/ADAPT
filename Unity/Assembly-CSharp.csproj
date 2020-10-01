@@ -188,11 +188,14 @@
     <Compile Include="Assets\HumanMotionGeneration\CharacterMovement.cs" />
     <Compile Include="Assets\HumanMotionGeneration\SkeletOutput.cs" />
     <Compile Include="Assets\HumanMotionGeneration\StlAssetPostProcessor.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\TestCharMove.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\TestSTL.cs" />
     <None Include="Assets\ADAPT Core\Demos\DemoSteering\Recast\README.txt" />
     <None Include="Assets\ADAPT Core\Art\Shaders\ColoredBlended.shader" />
     <None Include="Assets\ADAPT Core\Scripts\Character\README.txt" />
     <None Include="Assets\ADAPT Core\Scripts\Shader\ColoredBlended.shader" />
     <None Include="Assets\ADAPT Core\Demos\Common\Projector\Shaders\Projector Light.shader" />
+    <None Include="Assets\HumanMotionGeneration\charMovementsIn.txt" />
     <None Include="Assets\ADAPT Core\Demos\Common\Projector\Shaders\Projector Multiply.shader" />
     <None Include="Assets\ADAPT Core\Resources\NavmeshDebugShader.shader" />
     <None Include="Assets\ADAPT Core\Prefabs\Character\ADAPTManParams.txt" />
