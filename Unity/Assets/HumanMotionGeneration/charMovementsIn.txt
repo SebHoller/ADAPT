@@ -1,0 +1,4 @@
+walk:(1,1,1)
+leftHand:(2,2,2)
+walk:(10,10,3)
+rightHand:(12,12,5)
