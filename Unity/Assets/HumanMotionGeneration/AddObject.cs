@@ -28,7 +28,7 @@ using UnityEngine;
 public class AddObject : MonoBehaviour
 {
     GameObject StlObject = null;
-    public void addObject(string path, Boolean isStatic)
+    public void IportSTL(string path, Boolean isStatic)
     {
         StlObject = StlAssetPostProcessor.CreateStlParent(path);
         if (StlObject != null)
