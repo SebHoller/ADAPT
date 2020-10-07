@@ -42,7 +42,7 @@ public class STLImport : MonoBehaviour
     /// <param name="coordinates">the desired coordinates for the GameObject</param>
     /// <param name="isStatic">static or moveable GameObject</param>
     /// <param name="quaternion">the rotation for the GameObject</param>
-    public void ImportSTL(string path, Vector3 coordinates, bool isStatic, Quaternion quaternion)
+    public void ImportSTL(string path, bool isStatic, Vector3 coordinates, Quaternion quaternion)
     {
         // creates a gameObject out of an STL-file
         StlObject = StlAssetPostProcessor.CreateStlParent(path);
