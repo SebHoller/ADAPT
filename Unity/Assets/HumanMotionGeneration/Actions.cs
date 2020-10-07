@@ -27,83 +27,100 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using TreeSharpPlus;
 
-public class Actions
+public class Actions : MonoBehaviour
 {
-    static readonly GameObject gameObject = new GameObject();
-    readonly Behavior behavior = gameObject.AddComponent<Behavior>();
-    readonly Transform trans = gameObject.AddComponent<Transform>();
+    Behavior behavior;
+    Transform trans;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        behavior = gameObject.AddComponent<Behavior>();
+        trans = gameObject.AddComponent<Transform>();
+    }
+
+    // remove unnecessary brackets from coordinates
     private string RemoveBrackets(string text)
     {
         try {
-            return Regex.Replace(text, @"(,)", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
+            // replace brackets with empty string
+            return Regex.Replace(text, @"(,),[,]", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
         }
         catch (RegexMatchTimeoutException) {
             return String.Empty;
         }
     }
 
+    // wait the given amount of milliseconds
     public Node Wait(string param)
     {
-        // System.Threading.Thread.Sleep(Int32.Parse(param));
-        return behavior.Node_Gesture("idle_1");
+        return behavior.Node_Wait(param);
     }
 
+    // walk to the desired coordinates
     public Node Walk(string param)
     {
         RemoveBrackets(param);
         string[] split = param.Split(',');
-        Vector3 vec = new Vector3();
+        Vector3 vec;
+        // turn 2D coordinates into 3D coordinates
+        // if coordinates are incompatible use (0,0,0)
         switch (split.Length) {
             case 2:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
                 break;
             case 3:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
                 break;
             default:
-                new Vector3();
+                vec = new Vector3(0,0,0);
                 break;
         };
         return behavior.Node_GoTo(vec);
     }
 
+    // move left hand to given coordinates
     public Node LeftHand(string param)
     {
-        behavior.Character.Body.Coordinator.reachArm = trans.Find("leftHand");
+        behavior.Character.Body.Coordinator.reachArm = trans.Find("LeftArm");
         RemoveBrackets(param);
         string[] split = param.Split(',');
-        Vector3 vec = new Vector3();
+        Vector3 vec;
+        // turn 2D coordinates into 3D coordinates
+        // if coordinates are incompatible use (0,0,0)
         switch (split.Length) {
             case 2:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
                 break;
             case 3:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
                 break;
             default:
-                new Vector3();
+                vec = new Vector3(0,0,0);
                 break;
         };
         return behavior.Node_Reach(vec);
     }
 
+    // move right hand to given coordinates
     public Node RightHand(string param)
     {
-        behavior.Character.Body.Coordinator.reachArm = trans.Find("rightHand");
+        behavior.Character.Body.Coordinator.reachArm = trans.Find("RightArm");
         RemoveBrackets(param);
         string[] split = param.Split(',');
-        Vector3 vec = new Vector3();
+        Vector3 vec;
+        // turn 2D coordinates into 3D coordinates
+        // if coordinates are incompatible use (0,0,0)
         switch (split.Length)
         {
             case 2:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
                 break;
             case 3:
-                new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
                 break;
             default:
-                new Vector3();
+                vec = new Vector3(0,0,0);
                 break;
         };
         return behavior.Node_Reach(vec);

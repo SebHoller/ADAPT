@@ -29,24 +29,35 @@ using TreeSharpPlus;
 
 public class CharacterMovement : MonoBehaviour
 {
-    readonly Actions actions = new Actions();
+    Actions actions;
     Behavior behavior;
-    List<Node> nodes = null;
-    Boolean running = false;
+    List<Node> nodes;
+    bool running;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        actions = gameObject.AddComponent<Actions>();
+        nodes = null;
+        running = false;
+    }
+
+    // import a text file with commands for the character
     public void InputCharacterMovements(string path)
     {
+        // read the text file
         string[] lines = System.IO.File.ReadAllLines(path);
         behavior = gameObject.AddComponent<Behavior>();
         running = false;
         nodes = new List<Node>();
 
-        for (int i = 0; i < lines.Length; i++)
+        // for every line of the text file do the following
+        foreach (string line in lines)
         {
-            string line = lines[i];
             string[] split = line.Split(':');
             string action = split[0];
             string param = split[1];
+            // switch the commands and add the requested one
             switch (action)
             {
                 case "wait":
@@ -68,6 +79,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    // creates the sequence for the behaviour tree
     private Node MovementTree()
     {
         return new Sequence(nodes.ToArray());
@@ -76,8 +88,10 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check whether the animations are running
         if ((nodes != null) && (!running))
         {
+            // start the animation of the commands
             running = true;
             BehaviorEvent.Run(this.MovementTree(), this.behavior);
         }
