@@ -25,36 +25,37 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using CsvHelper;
+// using CsvHelper;
 using System.Globalization;
 using System;
 
 public class SkeletOutput : MonoBehaviour
 {
-    static StreamWriter writer;
-    CsvWriter csv;
+    // static StreamWriter writer;
+    // CsvWriter csv;
     // Start is called before the first frame update
     void Start()
     {
-        writer = new StreamWriter("SkeletOutput.csv");
-        csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+        // writer = new StreamWriter("SkeletOutput.csv");
+        // csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(File.Exists("SkeletOutput.csv"))
+        /* if(File.Exists("SkeletOutput.csv"))
         {
             FileStream stream = File.Open("SkeletOutput.csv", FileMode.Append);
             writer = new StreamWriter(stream);
-            csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            csv.Configuration.HasHeaderRecord = false;
-        }
+            // csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            // csv.Configuration.HasHeaderRecord = false;
+        }*/
         Character character = gameObject.GetComponent<Character>();
         List<Output> list = new List<Output>
         {
             new Output
             {
+                Time = DateTime.Now,
                 X = character.Body.Coordinator.hips.position.x,
                 Y = character.Body.Coordinator.hips.position.y,
                 Z = character.Body.Coordinator.hips.position.z,
@@ -79,10 +80,27 @@ public class SkeletOutput : MonoBehaviour
                 LeftFootX = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").Find("LeftFoot").transform.position.x,
                 LeftFootY = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").Find("LeftFoot").transform.position.y,
                 LeftFootZ = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").Find("LeftFoot").transform.position.z,
-                Time = DateTime.Now
+                LeftArmX = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("LeftShoulder").Find("LeftArm").transform.position.x,
+                LeftArmY = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("LeftShoulder").Find("LeftArm").transform.position.y,
+                LeftArmZ = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("LeftShoulder").Find("LeftArm").transform.position.z,
+                LeftLegX = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").transform.position.x,
+                LeftLegY = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").transform.position.y,
+                LeftLegZ = character.Body.Coordinator.hips.Find("LeftUpLeg").Find("LeftLeg").transform.position.z,
+                RightArmX = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("RightShoulder").Find("RightArm").transform.position.x,
+                RightArmY = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("RightShoulder").Find("RightArm").transform.position.y,
+                RightArmZ = character.Body.Coordinator.hips.Find("spine").Find("spine1").Find("spine2").Find("RightShoulder").Find("RightArm").transform.position.z,
+                RightLegX = character.Body.Coordinator.hips.Find("RightUpLeg").Find("RightLeg").transform.position.x,
+                RightLegY = character.Body.Coordinator.hips.Find("RightUpLeg").Find("RightLeg").transform.position.y,
+                RightLegZ = character.Body.Coordinator.hips.Find("RightUpLeg").Find("RightLeg").transform.position.z
             }
         };
-        csv.WriteRecords(list);
+        using (StreamWriter file =
+            new StreamWriter(@"C:\\projects\\ADAPT\\Unity\\Assets\\HumanMotionGeneration\\SkeletOutput.txt", true))
+        {
+            file.WriteLine(list.ToString());
+            file.Close();
+        }
+        // csv.WriteRecords(list);
     }
 
     private class Output
@@ -111,6 +129,18 @@ public class SkeletOutput : MonoBehaviour
         public float LeftFootX { get; set; }
         public float LeftFootY { get; set; }
         public float LeftFootZ { get; set; }
+        public float LeftArmX { get; set; }
+        public float LeftArmY { get; set; }
+        public float LeftArmZ { get; set; }
+        public float LeftLegX { get; set; }
+        public float LeftLegY { get; set; }
+        public float LeftLegZ { get; set; }
+        public float RightArmX { get; set; }
+        public float RightArmY { get; set; }
+        public float RightArmZ { get; set; }
+        public float RightLegX { get; set; }
+        public float RightLegY { get; set; }
+        public float RightLegZ { get; set; }
         public DateTime Time { get; set; }
     }
 }
