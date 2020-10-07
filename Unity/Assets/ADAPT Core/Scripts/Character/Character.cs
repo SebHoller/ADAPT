@@ -4,6 +4,7 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
+* modified: (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -24,7 +25,7 @@
 
 using UnityEngine;
 using TreeSharpPlus;
-using System.Collections;
+using System;
 
 public class Character : MonoBehaviour, ICharacter
 {
@@ -49,6 +50,15 @@ public class Character : MonoBehaviour, ICharacter
     /// What gesture we're currently running, if any
     /// </summary>
     private string currentGesture = null;
+
+    /// <summary>
+    /// Waits the given amount of milliseconds
+    /// </summary>
+    public virtual RunStatus Wait(Val<string> time)
+    {
+        System.Threading.Thread.Sleep(Int32.Parse(time.Value));
+        return RunStatus.Success;
+    }
 
     /// <summary>
     /// Sets a new navigation target. Will fail immediately if the
