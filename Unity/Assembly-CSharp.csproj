@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{CD8C9303-404B-FB8D-6B9B-21988D5CAC0A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,9 +55,6 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>packages\CsvHelper.15.0.6\lib\net47\CsvHelper.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.11f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -184,14 +180,16 @@
     <Compile Include="Assets\ADAPT Core\Tutorials\Tutorial4\Completed\TutorialInvokeEventCompleted.cs" />
     <Compile Include="Assets\ADAPT Core\Tutorials\Tutorial4\Completed\TutorialWanderBehaviorCompleted.cs" />
     <Compile Include="Assets\HumanMotionGeneration\Actions.cs" />
-    <Compile Include="Assets\HumanMotionGeneration\AddObject.cs" />
     <Compile Include="Assets\HumanMotionGeneration\CharacterMovement.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\FPSTarget.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\STLImport.cs" />
     <Compile Include="Assets\HumanMotionGeneration\SkeletOutput.cs" />
     <Compile Include="Assets\HumanMotionGeneration\StlAssetPostProcessor.cs" />
     <Compile Include="Assets\HumanMotionGeneration\TestCharMove.cs" />
     <Compile Include="Assets\HumanMotionGeneration\TestSTL.cs" />
     <None Include="Assets\ADAPT Core\Demos\DemoSteering\Recast\README.txt" />
     <None Include="Assets\ADAPT Core\Art\Shaders\ColoredBlended.shader" />
+    <None Include="Assets\HumanMotionGeneration\SkeletOutput.txt" />
     <None Include="Assets\ADAPT Core\Scripts\Character\README.txt" />
     <None Include="Assets\ADAPT Core\Scripts\Shader\ColoredBlended.shader" />
     <None Include="Assets\ADAPT Core\Demos\Common\Projector\Shaders\Projector Light.shader" />
@@ -200,7 +198,6 @@
     <None Include="Assets\ADAPT Core\Resources\NavmeshDebugShader.shader" />
     <None Include="Assets\ADAPT Core\Prefabs\Character\ADAPTManParams.txt" />
     <None Include="Assets\ADAPT Core\Resources\README.txt" />
-    <None Include="packages.config" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -739,41 +736,40 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Parabox.Stl">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Parabox.Stl.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Parabox.Stl.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Parabox.Stl.Editor">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Parabox.Stl.Editor.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Parabox.Stl.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Projekte/ADAPT/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/projects/ADAPT/Unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup></ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

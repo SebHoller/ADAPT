@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/HumanMotionGeneration/HMG.unity
+- path: Assets/ADAPT Core/Demos/DemoSteering/Unity/DemoSteering.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
