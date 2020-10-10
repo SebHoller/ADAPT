@@ -38,12 +38,12 @@ public class TestSTL : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L) == true)
         {
-            string path = "C:\\projects\\ADAPT\\Unity\\Assets\\HumanMotionGeneration\\10260_Workbench_max8_v1_iterations-2.stl";
+            string path = "Assets\\HumanMotionGeneration\\STL\\10260_Workbench_max8_v1_iterations-2.stl";
             this.stlImport.ImportSTL(path, true, new Vector3(5, 5, 1), Quaternion.identity);
         }
         if (Input.GetKeyDown(KeyCode.K) == true)
         {
-            string path = "C:\\projects\\ADAPT\\Unity\\Assets\\HumanMotionGeneration\\13604_Drill_Press_v1_L2.stl";
+            string path = "Assets\\HumanMotionGeneration\\STL\\13604_Drill_Press_v1_L2.stl";
             this.stlImport.ImportSTL(path, true, new Vector3(-5, -10, 0), Quaternion.identity);
         }
     }

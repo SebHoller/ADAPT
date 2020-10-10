@@ -38,7 +38,7 @@ public class TestCharMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C) == true)
         {
-            string path = "C:\\projects\\ADAPT\\Unity\\Assets\\HumanMotionGeneration\\charMovementsIn.txt";
+            string path = "Assets\\HumanMotionGeneration\\charMovementsIn.txt";
             charMovement.InputCharacterMovements(path);
         }
     }
