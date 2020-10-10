@@ -44,20 +44,23 @@ public class STLImport : MonoBehaviour
     /// <param name="quaternion">the rotation for the GameObject</param>
     public void ImportSTL(string path, bool isStatic, Vector3 coordinates, Quaternion quaternion)
     {
-        // creates a gameObject out of an STL-file
-        StlObject = StlAssetPostProcessor.CreateStlParent(path);
-        // check if it is actually created
-        if (StlObject != null)
+        if (System.IO.File.Exists(path))
         {
-            // set it static or movable depending on the input
-            StlObject.isStatic = isStatic;
-            // do not yet set it active
-            StlObject.SetActive(false);
+            // creates a gameObject out of an STL-file
+            StlObject = StlAssetPostProcessor.CreateStlParent(path);
+            // check if it is actually created
+            if (StlObject != null)
+            {
+                // set it static or movable depending on the input
+                StlObject.isStatic = isStatic;
+                // do not yet set it active
+                StlObject.SetActive(false);
+            }
+            // the coordinates for the object
+            vec = coordinates;
+            // the rotation of the object
+            this.quaternion = quaternion;
         }
-        // the coordinates for the object
-        vec = coordinates;
-        // the rotation of the object
-        this.quaternion = quaternion;
     }
 
     // Update is called once per frame
