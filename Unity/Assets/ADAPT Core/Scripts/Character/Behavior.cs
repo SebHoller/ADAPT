@@ -4,7 +4,6 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
-* modified: (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -62,6 +61,7 @@ public class Behavior<T> : MonoBehaviour, IBehavior
 
     public Node Node_GoTo(Val<Vector3> targ)
     {
+        Debug.Log("Node_GoTo");
         return new LeafInvoke(
             () => this.Character.NavGoTo(targ), // Approach the target
             () => this.Character.NavStop());    // Stop if we're terminated
@@ -88,6 +88,7 @@ public class Behavior<T> : MonoBehaviour, IBehavior
 
     public Node Node_Reach(Val<Vector3> targ)
     {
+        Debug.Log("Node_Reach");
         return new LeafInvoke(
             () => this.Character.ReachFor(targ),
             () => this.Character.ReachStop());
@@ -106,12 +107,6 @@ public class Behavior<T> : MonoBehaviour, IBehavior
             () => this.Character.NavTurn(targ),
             () => this.Character.NavOrientBehavior(
                 OrientationBehavior.LookForward));
-    }
-
-    public Node Node_Wait(Val<string> time)
-    {
-        return new LeafInvoke(
-            () => this.Character.Wait(time));
     }
     #endregion
 

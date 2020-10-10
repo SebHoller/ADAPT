@@ -4,7 +4,6 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
-* modified: (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -40,5 +39,4 @@ public interface ICharacter
     RunStatus HeadLookStop();
     RunStatus Gesture(Val<string> name);
     RunStatus GestureStop();
-    RunStatus Wait(Val<string> time);
 }
