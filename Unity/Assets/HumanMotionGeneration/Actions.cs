@@ -26,51 +26,48 @@ using System;
 using UnityEngine;
 using System.Text.RegularExpressions;
 using TreeSharpPlus;
+using System.Globalization;
 
 public class Actions : MonoBehaviour
 {
     Behavior behavior;
-    Transform trans;
+    public Transform trans;
 
     // Start is called before the first frame update
     void Start()
     {
         behavior = gameObject.AddComponent<Behavior>();
-        trans = gameObject.AddComponent<Transform>();
+        // trans = gameObject.AddComponent<Transform>();
     }
 
     // remove unnecessary brackets from coordinates
     private string RemoveBrackets(string text)
     {
-        try {
-            // replace brackets with empty string
-            return Regex.Replace(text, @"(,),[,]", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
-        }
-        catch (RegexMatchTimeoutException) {
-            return String.Empty;
-        }
-    }
-
-    // wait the given amount of milliseconds
-    public Node Wait(string param)
-    {
-        return behavior.Node_Wait(param);
+        return text.Replace("(", "").Replace(")", "").Replace("[", "").Replace("]", "");
     }
 
     // walk to the desired coordinates
     public Node Walk(string param)
     {
-        RemoveBrackets(param);
+        param = RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec;
+        float x;
+        float y;
+        float z;
         // turn 2D coordinates into 3D coordinates
         // if coordinates are incompatible use (0,0,0)
         switch (split.Length) {
             case 2:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                vec = new Vector3(x, y);
                 break;
             case 3:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                float.TryParse(split[2], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out z);
+                vec = new Vector3(x, y, z);
                 break;
             default:
                 vec = new Vector3(0,0,0);
@@ -82,47 +79,63 @@ public class Actions : MonoBehaviour
     // move left hand to given coordinates
     public Node LeftHand(string param)
     {
-        behavior.Character.Body.Coordinator.reachArm = trans.Find("LeftArm");
-        RemoveBrackets(param);
+        param = RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec;
+        float x;
+        float y;
+        float z;
         // turn 2D coordinates into 3D coordinates
         // if coordinates are incompatible use (0,0,0)
         switch (split.Length) {
             case 2:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                vec = new Vector3(x, y);
                 break;
             case 3:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                float.TryParse(split[2], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out z);
+                vec = new Vector3(x, y, z);
                 break;
             default:
                 vec = new Vector3(0,0,0);
                 break;
         };
+        behavior.Character.Body.Coordinator.reachArm = transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm");
         return behavior.Node_Reach(vec);
     }
 
     // move right hand to given coordinates
     public Node RightHand(string param)
     {
-        behavior.Character.Body.Coordinator.reachArm = trans.Find("RightArm");
-        RemoveBrackets(param);
+        param = RemoveBrackets(param);
         string[] split = param.Split(',');
         Vector3 vec;
+        float x;
+        float y;
+        float z;
         // turn 2D coordinates into 3D coordinates
         // if coordinates are incompatible use (0,0,0)
         switch (split.Length)
         {
             case 2:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                vec = new Vector3(x, y);
                 break;
             case 3:
-                vec = new Vector3(float.Parse(split[0]), float.Parse(split[1]), float.Parse(split[2]));
+                float.TryParse(split[0], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out x);
+                float.TryParse(split[1], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out y);
+                float.TryParse(split[2], NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat, result: out z);
+                vec = new Vector3(x, y, z);
                 break;
             default:
                 vec = new Vector3(0,0,0);
                 break;
         };
+        behavior.Character.Body.Coordinator.reachArm = transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm");
         return behavior.Node_Reach(vec);
     }
 }
