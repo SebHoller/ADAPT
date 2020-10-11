@@ -61,7 +61,6 @@ public class Behavior<T> : MonoBehaviour, IBehavior
 
     public Node Node_GoTo(Val<Vector3> targ)
     {
-        Debug.Log("Node_GoTo");
         return new LeafInvoke(
             () => this.Character.NavGoTo(targ), // Approach the target
             () => this.Character.NavStop());    // Stop if we're terminated
@@ -88,7 +87,6 @@ public class Behavior<T> : MonoBehaviour, IBehavior
 
     public Node Node_Reach(Val<Vector3> targ)
     {
-        Debug.Log("Node_Reach");
         return new LeafInvoke(
             () => this.Character.ReachFor(targ),
             () => this.Character.ReachStop());
