@@ -22,59 +22,57 @@
 * along with ADAPT.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-using System;
-using UnityEngine;
+using System.IO;
 using System.Collections.Generic;
 using TreeSharpPlus;
+using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : Behavior
 {
+    public Behaviour behaviour;
     Actions actions;
-    Behavior behavior;
     List<Node> nodes;
-    bool running;
 
     // Start is called before the first frame update
     void Start()
     {
         actions = gameObject.AddComponent<Actions>();
         nodes = null;
-        running = false;
     }
 
     // import a text file with commands for the character
     public void InputCharacterMovements(string path)
     {
         // read the text file
-        string[] lines = System.IO.File.ReadAllLines(path);
-        behavior = gameObject.AddComponent<Behavior>();
-        running = false;
-        nodes = new List<Node>();
+        if(File.Exists(path)) {
+            string[] lines = File.ReadAllLines(path);
+            nodes = new List<Node>();
 
-        // for every line of the text file do the following
-        foreach (string line in lines)
-        {
-            string[] split = line.Split(':');
-            string action = split[0];
-            string param = split[1];
-            // switch the commands and add the requested one
-            switch (action)
+            // for every line of the text file do the following
+            foreach (string line in lines)
             {
-                case "wait":
-                    nodes.Add(actions.Wait(param));
-                    break;
-                case "walk":
-                    nodes.Add(actions.Walk(param));
-                    break;
-                case "leftHand":
-                    nodes.Add(actions.LeftHand(param));
-                    break;
-                case "rightHand":
-                    nodes.Add(actions.RightHand(param));
-                    break;
-                default:
-                    Console.Error.WriteLine("The command \"" + action + "\" is not implemented.");
-                    break;
+                string[] split = line.Replace(" ", "").Split(':');
+                string action = split[0];
+                string param = split[1];
+                // switch the commands and add the requested one
+                switch (action)
+                {
+                    case "wait":
+                        nodes.Add(new LeafWait(long.Parse(param)));
+                        break;
+                    case "walk":
+                        nodes.Add(actions.Walk(param));
+                        break;
+                    case "leftHand":
+                        nodes.Add(actions.LeftHand(param));
+                        break;
+                    case "rightHand":
+                        nodes.Add(actions.RightHand(param));
+                        break;
+                    default:
+                        Debug.LogError("The command \"" + action + "\" is not implemented.");
+                        break;
+                }
             }
         }
     }
@@ -89,11 +87,9 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         // check whether the animations are running
-        if ((nodes != null) && (!running))
+        if ((nodes != null) && (nodes.Count>0))
         {
-            // start the animation of the commands
-            running = true;
-            BehaviorEvent.Run(this.MovementTree(), this.behavior);
+            base.StartTree(this.MovementTree());
         }
     }
 }
