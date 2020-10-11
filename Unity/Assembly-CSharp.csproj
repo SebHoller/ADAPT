@@ -182,6 +182,7 @@
     <Compile Include="Assets\HumanMotionGeneration\Actions.cs" />
     <Compile Include="Assets\HumanMotionGeneration\CharacterMovement.cs" />
     <Compile Include="Assets\HumanMotionGeneration\FPSTarget.cs" />
+    <Compile Include="Assets\HumanMotionGeneration\LoopMovement.cs" />
     <Compile Include="Assets\HumanMotionGeneration\STLImport.cs" />
     <Compile Include="Assets\HumanMotionGeneration\SkeletOutput.cs" />
     <Compile Include="Assets\HumanMotionGeneration\StlAssetPostProcessor.cs" />
