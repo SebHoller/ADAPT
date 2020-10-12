@@ -23,22 +23,32 @@
 */
 #endregion
 using UnityEngine;
+using TreeSharpPlus;
 
-public class FPSTarget : MonoBehaviour
+public class Demo : Behavior
 {
-    private int target = 60;
-    private void Awake()
+    protected Node Tree()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = target;
+        Vector3 one = new Vector3((float)15.52169, (float)18.3128, (float)-2.37279);
+        Vector3 two = new Vector3((float)7.352128, (float)20.19779, (float)-24.83835);
+        Vector3 three = new Vector3((float)-16.81005, (float)18.13869, (float)6.542959);
+        Vector3 reach = new Vector3((float)-20, (float)20, (float)10);
+        return
+            new Sequence(
+                Node_GoTo(one),
+                new LeafWait(3000),
+                Node_GoTo(two),
+                new LeafWait(3000),
+                Node_GoTo(three),
+                new LeafWait(3000),
+                Node_Reach(reach));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Application.targetFrameRate != target)
+        if (Input.GetKeyDown(KeyCode.P) == true)
         {
-            Application.targetFrameRate = target;
+            base.StartTree(this.Tree());
         }
     }
 }

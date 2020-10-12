@@ -90,6 +90,7 @@ public class CharacterMovement : Behavior
         if ((nodes != null) && (nodes.Count>0))
         {
             base.StartTree(this.MovementTree());
+            nodes = null;
         }
     }
 }

@@ -29,7 +29,7 @@ using System.Globalization;
 public class Actions : MonoBehaviour
 {
     Behavior behavior;
-    public Transform trans;
+    public Transform transform;
 
     // Start is called before the first frame update
     void Start()

@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: fa43db8d8a031c848899d9618be36aa1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 95664c4916c4d324fae87bbf63dfb54f, type: 2}
 --- !u!4 &247813784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400110, guid: aa2100e0ea1acd24d9891ffca79dad26,
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e4df12c583c66449a686cb47f1e620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trans: {fileID: 1183851438}
+  transform: {fileID: 1183851438}
 --- !u!111 &1183851436 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: 11100000, guid: aa2100e0ea1acd24d9891ffca79dad26,
