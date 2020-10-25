@@ -234,7 +234,6 @@ public class Character : MonoBehaviour, ICharacter
                 setArm = true;
             }
 
-            Debug.Log("reaching");
             // TODO: Heuristic check here - AS
             this.Body.ReachFor(target.Value);
         }
