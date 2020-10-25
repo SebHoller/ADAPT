@@ -33,6 +33,7 @@ Very quick getting started guide:
 3. Look at the demos under the Demos directory and Tutorials
 
 For HumanMotionGeneration:
+
 4. change into the directory "Unity/Assets/HumanMotionGeneration"
 5. Start the scene "Demo"
 6. Press keys for movements and STL-Import:
