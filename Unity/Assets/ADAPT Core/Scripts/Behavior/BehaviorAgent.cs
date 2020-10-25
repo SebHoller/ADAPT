@@ -4,6 +4,7 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
+* modified (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -254,7 +255,21 @@ public sealed class BehaviorAgent : IBehaviorUpdate
         switch (this.AgentStatus)
         {
             case Status.Running:
-                this.treeRoot.Tick();
+                try
+                {
+                    this.treeRoot.Tick();
+                } catch (ApplicationException e) {
+                    if (e.Message.Contains("Tick on non running node"))
+                    {
+                        Debug.Log(e.Message);
+                        Debug.Log("BehaviorStop");
+                        this.BehaviorStop();
+                    }
+                } catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                    this.BehaviorStop();
+                }
                 break;
             case Status.Terminating:
                 RunStatus result = this.TreeTerminate();
