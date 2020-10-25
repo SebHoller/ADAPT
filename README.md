@@ -6,7 +6,7 @@ http://github.com/ashoulson/ADAPT
 
 http://www.youtube.com/watch?v=aW1FJ3Qe1X0
 
-**HumanMotionGeneration:
+**HumanMotionGeneration:**
 
 *A Bachelor´s Thesis by Sebastian Holler at Technical University Munich (TUM)*
 *A project to use and extend ADAPT.*
