@@ -4,6 +4,7 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
+* modified (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -28,6 +29,13 @@ using System;
 
 public class Character : MonoBehaviour, ICharacter
 {
+    private readonly float dist = 0.5f;
+    private DateTime start;
+    private bool started = false;
+    private bool stopped = false;
+    private bool setArm = false;
+    private Val<Vector3> lastTarget = null;
+
     /// <summary>
     /// The Body interface for this character. Sits below this level in the
     /// ADAPT character stack.
@@ -130,11 +138,117 @@ public class Character : MonoBehaviour, ICharacter
     /// </summary>
     public virtual RunStatus ReachFor(Val<Vector3> target)
     {
-        // TODO: Heuristic check here - AS
-        this.Body.ReachFor(target.Value);
+        if (!started && ((lastTarget == null) || (lastTarget.Value != target.Value)))
+        {
+            lastTarget = target;
+            started = true;
+            start = DateTime.Now;
+            stopped = false;
+        }
+        if(!stopped)
+        {
+            // TODO: Heuristic check here - AS
+            this.Body.ReachFor(target.Value);
+        }
         // TODO: Currently, this blocks indefinitely. - AS
-        //if (this.Body.ReachHasReached() == true)
-        //    return RunStatus.Success;
+        // if (this.Body.ReachHasReached() == true)
+        //     return RunStatus.Success;
+        if (ReachHasReached(target, true))
+        {
+            started = false;
+            stopped = true;
+            return ReachStop();
+        }
+        return RunStatus.Running;
+        // TODO: Timeout? - AS
+    }
+
+    private bool ReachHasReached(Val<Vector3> target, bool left)
+    {
+        if (DateTime.Compare(DateTime.Now, start.AddSeconds(10)) >= 0)
+        {
+            return true;
+        }
+
+        // bool x = Math.Abs(this.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").position.x - target.Value.x) <= dist;
+        // bool y = Math.Abs(this.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").position.y - target.Value.y) <= dist;
+        // bool z = Math.Abs(this.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").position.z - target.Value.z) <= dist;
+
+        // bool x = Math.Abs(target.Value.x - this.Body.Coordinator.reachArm.position.x) <= dist;
+        // bool y = Math.Abs(target.Value.y - this.Body.Coordinator.reachArm.position.y) <= dist;
+        // bool z = Math.Abs(target.Value.z - this.Body.Coordinator.reachArm.position.z) <= dist;
+
+        // bool x = Math.Abs(target.Value.x - this.Body.Coordinator.reach.endEffector.position.x) <= dist;
+        // bool y = Math.Abs(target.Value.y - this.Body.Coordinator.reach.endEffector.position.y) <= dist;
+        // bool z = Math.Abs(target.Value.z - this.Body.Coordinator.reach.endEffector.position.z) <= dist;
+
+        // return (x && y && z);
+
+        // return this.Body.Coordinator.reach.HasReached;
+        if (left)
+        {
+            return (target.Value - this.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").position).sqrMagnitude <= dist;
+        } else
+        {
+            return (target.Value - this.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm").Find("RightHand").position).sqrMagnitude <= dist;
+        }
+    }
+
+    /// <summary>
+    /// Stops the Reach controller. Blocks until it successfully reaches.
+    /// </summary>
+    public virtual RunStatus ReachFor(Val<Vector3> target, bool left)
+    {
+        if (!started && ((lastTarget == null) || (lastTarget.Value != target.Value)))
+        {
+            lastTarget = target;
+            started = true;
+            start = DateTime.Now;
+            stopped = false;
+        }
+        
+        if (!stopped)
+        {
+            if(!setArm)
+            {
+                if (left)
+                {
+                    IKJoint[] bones = new IKJoint[3];
+                    bones[0] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm"));
+                    bones[1] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm"));
+                    bones[2] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand"));
+                    Body.Coordinator.reach.bones = bones;
+                    Body.Coordinator.reach.endEffector = this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").Find("LeftHandIndex1");
+                    Body.Coordinator.reachArm = this.Body.Coordinator.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm");
+                }
+                else
+                {
+                    IKJoint[] bones = new IKJoint[3];
+                    bones[0] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm"));
+                    bones[1] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm"));
+                    bones[2] = new IKJoint(this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm").Find("RightHand"));
+                    Body.Coordinator.reach.bones = bones;
+                    Body.Coordinator.reach.endEffector = this.Body.Coordinator.reach.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm").Find("RightHand").Find("RightHandIndex1");
+                    Body.Coordinator.reachArm = this.Body.Coordinator.transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm");
+                }
+                setArm = true;
+            }
+
+            Debug.Log("reaching");
+            // TODO: Heuristic check here - AS
+            this.Body.ReachFor(target.Value);
+        }
+        // TODO: Currently, this blocks indefinitely. - AS
+        // if (this.Body.ReachHasReached() == true)
+        //     return RunStatus.Success;
+        if (ReachHasReached(target, left))
+        {
+            started = false;
+            stopped = true;
+            setArm = false;
+            return ReachStop();
+            // return RunStatus.Success;
+        }
         return RunStatus.Running;
         // TODO: Timeout? - AS
     }

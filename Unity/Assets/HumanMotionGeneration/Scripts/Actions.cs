@@ -29,7 +29,6 @@ using System.Globalization;
 public class Actions : MonoBehaviour
 {
     Behavior behavior;
-    public Transform transform;
 
     // Start is called before the first frame update
     void Start()
@@ -100,13 +99,7 @@ public class Actions : MonoBehaviour
                 vec = new Vector3(0,0,0);
                 break;
         };
-        IKJoint[] bones = new IKJoint[3];
-        bones[0] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm"));
-        bones[1] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm"));
-        bones[2] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand"));
-        behavior.Character.Body.Coordinator.reach.bones = bones;
-        behavior.Character.Body.Coordinator.reach.endEffector = transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("LeftShoulder").Find("LeftArm").Find("LeftForeArm").Find("LeftHand").Find("LeftHandIndex1");
-        return behavior.Node_Reach(vec);
+        return behavior.Node_Reach(vec, true);
     }
 
     // move right hand to given coordinates
@@ -137,12 +130,6 @@ public class Actions : MonoBehaviour
                 vec = new Vector3(0,0,0);
                 break;
         };
-        IKJoint[] bones = new IKJoint[3];
-        bones[0] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm"));
-        bones[1] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm"));
-        bones[2] = new IKJoint(transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm").Find("RightHand"));
-        behavior.Character.Body.Coordinator.reach.bones = bones;
-        behavior.Character.Body.Coordinator.reach.endEffector = transform.Find("Hips").Find("Spine").Find("Spine1").Find("Spine2").Find("RightShoulder").Find("RightArm").Find("RightForeArm").Find("RightHand").Find("RightHandIndex1");
-        return behavior.Node_Reach(vec);
+        return behavior.Node_Reach(vec, false);
     }
 }

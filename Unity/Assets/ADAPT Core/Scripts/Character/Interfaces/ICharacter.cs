@@ -4,6 +4,7 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
+* modified (C) 2020 Sebastian Holler
 *
 * This file is part of ADAPT.
 * 
@@ -34,6 +35,7 @@ public interface ICharacter
     RunStatus NavTurn(Val<Quaternion> target);
     RunStatus NavOrientBehavior(Val<OrientationBehavior> behavior);
     RunStatus ReachFor(Val<Vector3> target);
+    RunStatus ReachFor(Val<Vector3> target, bool left);
     RunStatus ReachStop();
     RunStatus HeadLook(Val<Vector3> target);
     RunStatus HeadLookStop();
