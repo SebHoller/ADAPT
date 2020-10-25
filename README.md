@@ -6,6 +6,11 @@ http://github.com/ashoulson/ADAPT
 
 http://www.youtube.com/watch?v=aW1FJ3Qe1X0
 
+**HumanMotionGeneration:
+
+*A Bachelor´s Thesis by Sebastian Holler at Technical University Munich (TUM)*
+*A project to use and extend ADAPT.*
+
 ---
 
 **Paper:**
@@ -25,6 +30,15 @@ Very quick getting started guide:
 1. Build ADAPT.sln (Optional, for Recast inclusion)
 2. Open the "Unity" folder as a Unity Project
 3. Look at the demos under the Demos directory and Tutorials
+
+For HumanMotionGeneration:
+4. change into the directory "Unity/Assets/HumanMotionGeneration"
+5. Start the scene "Demo"
+6. Press keys for movements and STL-Import:
+- "C": starts the command in "charMovementsIn.txt"
+- "P": starts set demo movements
+- "K": loads a drill-press into the scene
+- "L": loads a workbench into the scene
 
 ---
 
