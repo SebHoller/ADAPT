@@ -3,7 +3,7 @@
 * HumanMotionGeneration an expansion of Agent Development and Prototyping Testbed
 * https://github.com/Sebauer98/ADAPT
 * 
-* Copyright (C) 2020 Sebastian Holler
+* Copyright (C) 2020 Sebastian Holler - seb.holler98@gmail.com
 *
 * This file is part of HumanMotionGeneration.
 * This project extends ADAPT.

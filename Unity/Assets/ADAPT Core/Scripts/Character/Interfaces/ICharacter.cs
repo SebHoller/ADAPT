@@ -4,7 +4,7 @@
 * https://github.com/ashoulson/ADAPT
 * 
 * Copyright (C) 2011-2015 Alexander Shoulson - ashoulson@gmail.com
-* modified (C) 2020 Sebastian Holler
+* modified (C) 2020 Sebastian Holler - seb.holler98@gmail.com
 *
 * This file is part of ADAPT.
 * 
