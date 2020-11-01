@@ -65,7 +65,10 @@ public class Character : MonoBehaviour, ICharacter
     public virtual RunStatus NavGoTo(Val<Vector3> target)
     {
         if (this.Body.NavCanReach(target.Value) == false)
+        {
+            Debug.LogError("Coordinates (" + target.Value.x + ", " + target.Value.y + ", " + target.Value.z + ") are out of reach!");
             return RunStatus.Failure;
+        }
         // TODO: I previously had this if statement here to prevent spam:
         //     if (this.Interface.NavTarget() != target)
         // It's good for limiting the amount of SetDestination() calls we
@@ -163,6 +166,9 @@ public class Character : MonoBehaviour, ICharacter
         // TODO: Timeout? - AS
     }
 
+
+    // Checks if target is reached
+    // Has a Timeout of 10 seconds
     private bool ReachHasReached(Val<Vector3> target, bool left)
     {
         if (DateTime.Compare(DateTime.Now, start.AddSeconds(10)) >= 0)
